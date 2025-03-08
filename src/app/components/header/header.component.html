@@ -1,0 +1,21 @@
+<mat-form-field>
+  <mat-label>Search by User ID</mat-label>
+  <input matInput (input)="onSearchChange($any($event.target).value)" >
+</mat-form-field>
+
+<div class="user-list-container">
+  <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+  <div class="user-card" *ngFor="let user of users" (click)="onUserClick(user.id)">
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar class="user-avatar"></div>
+        <mat-card-title>{{ user.first_name }} {{ user.last_name }}</mat-card-title>
+        <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="user.avatar" alt="{{ user.first_name }} {{ user.last_name }}">
+    </mat-card>
+  </div>
+</div>
+
+<!-- <p>header works!</p> -->
+<!-- <input matInput (input)="onSearchChange(onSearchChange($event.target.value))" /> -->
